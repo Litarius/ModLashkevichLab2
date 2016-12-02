@@ -32,9 +32,9 @@ namespace Lab2
             chart.Series["Series1"].ChartType = SeriesChartType.Column;
 
             var rand = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
-                chart.Series["Series1"].Points.Add(rand.Next(1,10));
+                chart.Series["Series1"].Points.Add(rand.Next(1,4));
             }
         }
     }
