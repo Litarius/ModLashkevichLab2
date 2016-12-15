@@ -20,6 +20,7 @@ namespace Lab2.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private LemerControlViewModel _lemerControlViewModel;
+        private GammaControlViewModel _gammaControlViewModel;
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -27,6 +28,7 @@ namespace Lab2.ViewModel
         public MainViewModel()
         {
             LemerControlViewModel = new LemerControlViewModel();
+            GammaControlViewModel = new GammaControlViewModel();
         }
 
         public LemerControlViewModel LemerControlViewModel
@@ -36,6 +38,16 @@ namespace Lab2.ViewModel
             {
                 _lemerControlViewModel = value;
                 RaisePropertyChanged(() => LemerControlViewModel);
+            }
+        }
+
+        public GammaControlViewModel GammaControlViewModel
+        {
+            get { return _gammaControlViewModel; }
+            set
+            {
+                _gammaControlViewModel = value;
+                RaisePropertyChanged(() => GammaControlViewModel);
             }
         }
 

@@ -26,10 +26,12 @@ namespace Lab2
             InitializeComponent();
 
             chart.ChartAreas.Add(new ChartArea("Default"));
+           
 
             chart.Series.Add(new Series("Series1"));
             chart.Series["Series1"].ChartArea = "Default";
-            chart.Series["Series1"].ChartType = SeriesChartType.Column;
+            chart.Series["Series1"].ChartType = SeriesChartType.Line;
+            chart.Series["Series1"].XAxisType = AxisType.Primary;
             MainViewModel.OnCalculate += doubles =>
             {
                 chart.Series["Series1"].Points.Clear();
