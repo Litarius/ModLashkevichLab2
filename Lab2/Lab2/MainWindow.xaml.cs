@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lab2.ViewModel;
 
 namespace Lab2
 {
@@ -26,16 +27,18 @@ namespace Lab2
 
             chart.ChartAreas.Add(new ChartArea("Default"));
 
-            // Добавим линию, и назначим ее в ранее созданную область "Default"
             chart.Series.Add(new Series("Series1"));
             chart.Series["Series1"].ChartArea = "Default";
             chart.Series["Series1"].ChartType = SeriesChartType.Column;
-
-            var rand = new Random();
-            for (int i = 0; i < 100; i++)
+            MainViewModel.OnCalculate += doubles =>
             {
-                chart.Series["Series1"].Points.Add(rand.Next(1,10));
-            }
+                chart.Series["Series1"].Points.Clear();
+
+                foreach (var item in doubles)
+                {
+                    chart.Series["Series1"].Points.Add(item);
+                }
+            };
         }
     }
 }
