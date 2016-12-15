@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Lab2"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Lab2.Controls"
     Title="MainWindow"
     Width="800"
     Height="600"
@@ -19,82 +20,7 @@
 
         <TabControl>
             <TabItem Header="Лемер">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Content="X0" />
-                    <TextBox
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Text="{Binding X0}" />
-
-
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Content="a" />
-                    <TextBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Text="{Binding A}" />
-
-                    <Label
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Content="c" />
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Text="{Binding C}" />
-
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Content="n" />
-                    <TextBox
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Text="{Binding N}" />
-
-                    <Label
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Content="Кол-во" />
-                    <TextBox
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Text="{Binding Count}" />
-
-
-                    <TextBox
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        Height="100"
-                        Text="{Binding Result}" />
-
-                    <Button
-                        Grid.Row="6"
-                        Command="{Binding LemerCommand}"
-                        Content="Calc" />
-
-
-                </Grid>
+                <controls:LemerControl DataContext="{Binding LemerControlViewModel}"></controls:LemerControl>
             </TabItem>
             <TabItem Header="Гамма" />
             <TabItem Header="Нормальное" />
