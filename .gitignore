@@ -191,3 +191,7 @@ $RECYCLE.BIN/
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+/Lab2/packages
+/Lab2/.vs
+/Lab2/Lab2/bin
+/Lab2/Lab2/obj
