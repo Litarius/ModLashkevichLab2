@@ -19,7 +19,7 @@ namespace Lab2.ViewModel
         {
             _n = 7;
             _l = 5;
-            _count = 100;
+            _count = 1000;
 
             CalculateCommand = new RelayCommand(ExecuteCalculateCommand);
         }
@@ -33,10 +33,10 @@ namespace Lab2.ViewModel
                 var tmp = 0.0;
                 for (var j = 0; j < _n; j++)
                 {
-                    tmp += -1/_l * Math.Log10(rnd.NextDouble());
-                    
+                    tmp += -1 / _l * Math.Log10(rnd.NextDouble());
+
                 }
-                randArray.Add( tmp);
+                randArray.Add(tmp);
 
             }
 
@@ -55,6 +55,36 @@ namespace Lab2.ViewModel
 
         }
 
+        public double N
+        {
+            get { return _n; }
+            set
+            {
+                _n = value;
+                RaisePropertyChanged(() => N);
+            }
+        }
+
+        public double L
+        {
+            get { return _l; }
+            set
+            {
+                _l = value;
+                RaisePropertyChanged(() => L);
+            }
+        }
+
+        public int Count
+        {
+            get { return _count; }
+            set
+            {
+                _count = value;
+                RaisePropertyChanged(() => Count);
+            }
+        }
+
         public string Result
         {
             get { return _result; }
@@ -65,6 +95,7 @@ namespace Lab2.ViewModel
 
         private void ExecuteCalculateCommand()
         {
+            Result = string.Empty;
             Calculate();
         }
 

@@ -25,21 +25,54 @@ namespace Lab2
         {
             InitializeComponent();
 
-            chart.ChartAreas.Add(new ChartArea("Default"));
-           
+            chart.ChartAreas.Add(new ChartArea("ChartArea1"));
+
 
             chart.Series.Add(new Series("Series1"));
-            chart.Series["Series1"].ChartArea = "Default";
-            chart.Series["Series1"].ChartType = SeriesChartType.Line;
+            chart.Series["Series1"].ChartArea = "ChartArea1";
+            chart.Series["Series1"].ChartType = SeriesChartType.Column;
             chart.Series["Series1"].XAxisType = AxisType.Primary;
             MainViewModel.OnCalculate += doubles =>
             {
                 chart.Series["Series1"].Points.Clear();
 
-                foreach (var item in doubles)
+                const int intervalsCount = 40;
+                List<double> numbers = doubles.ToList();
+                numbers.Sort();
+                double width = numbers.Last() - numbers.First();
+
+                double widthOfInterval = width / intervalsCount;
+
+                double[] heights = new double[intervalsCount];
+                double[] xValues = new double[intervalsCount];
+
+                xValues[0] = Math.Round(0.0245 * width + numbers.First(), 3);
+                for (int i = 1; i < intervalsCount; i++)
                 {
-                    chart.Series["Series1"].Points.Add(item);
+                    xValues[i] = Math.Round(xValues[i - 1] + widthOfInterval, 3);
                 }
+
+                double xLeft = numbers.First();
+                double xRight = xLeft + widthOfInterval;
+                int j = 0;
+                for (int i = 0; i < intervalsCount; i++)
+                {
+                    while (j < numbers.Count && xLeft <= numbers[j] && xRight > numbers[j])
+                    {
+                        heights[i]++;
+                        j++;
+                    }
+                    heights[i] /= numbers.Count;
+                    xLeft = xRight;
+                    xRight += widthOfInterval;
+                }
+
+                chart.ChartAreas["ChartArea1"].AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+                chart.Series["Series1"].Points.DataBindXY(xValues, heights);
+
+                AllItems.ItemsSource = doubles;
+
+
             };
         }
     }

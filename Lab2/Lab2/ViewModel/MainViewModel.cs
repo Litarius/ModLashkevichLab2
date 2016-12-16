@@ -5,22 +5,12 @@ using GalaSoft.MvvmLight.Command;
 
 namespace Lab2.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         private LemerControlViewModel _lemerControlViewModel;
         private GammaControlViewModel _gammaControlViewModel;
+        private NormalControlViewModel _normalControlViewModel;
+        private ExponentialControlViewModel _exponentialControlViewModel;
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -29,6 +19,8 @@ namespace Lab2.ViewModel
         {
             LemerControlViewModel = new LemerControlViewModel();
             GammaControlViewModel = new GammaControlViewModel();
+            NormalControlViewModel = new NormalControlViewModel();
+            ExponentialControlViewModel = new ExponentialControlViewModel();
         }
 
         public LemerControlViewModel LemerControlViewModel
@@ -48,6 +40,26 @@ namespace Lab2.ViewModel
             {
                 _gammaControlViewModel = value;
                 RaisePropertyChanged(() => GammaControlViewModel);
+            }
+        }
+
+        public NormalControlViewModel NormalControlViewModel
+        {
+            get { return _normalControlViewModel; }
+            set
+            {
+                _normalControlViewModel = value;
+                RaisePropertyChanged(() => NormalControlViewModel);
+            }
+        }
+
+        public ExponentialControlViewModel ExponentialControlViewModel
+        {
+            get { return _exponentialControlViewModel; }
+            set
+            {
+                _exponentialControlViewModel = value;
+                RaisePropertyChanged(() => ExponentialControlViewModel);
             }
         }
 

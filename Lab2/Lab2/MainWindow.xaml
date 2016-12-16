@@ -17,6 +17,10 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
         <TabControl>
             <TabItem Header="Лемер">
@@ -25,11 +29,23 @@
             <TabItem Header="Гамма">
                 <controls:GammaControl DataContext="{Binding GammaControlViewModel}" />
             </TabItem>
-            <TabItem Header="Нормальное" />
-            <TabItem Header="Показательное" />
+            <TabItem Header="Нормальное">
+                <controls:NormalControl DataContext="{Binding NormalControlViewModel}" />
+            </TabItem>
+            <TabItem Header="Показательное">
+                <controls:ExponentalControl DataContext="{Binding ExponentialControlViewModel}" />
+            </TabItem>
         </TabControl>
 
-        <WindowsFormsHost Grid.Column="1">
+        <ListBox
+            x:Name="AllItems"
+            Grid.Row="1"
+            Grid.Column="0" />
+
+        <WindowsFormsHost
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1">
             <charting:Chart x:Name="chart" />
         </WindowsFormsHost>
     </Grid>
